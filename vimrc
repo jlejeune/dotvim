@@ -62,10 +62,6 @@ EOF
 autocmd FileType python set ft=python.django
 autocmd FileType html set ft=htmldjango.html
 
-" Activation de la barre de status de fugitive
-set laststatus=2
-set statusline=set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [Line=%04l]\ [Col=%04v]\ [%p%%]\ %{fugitive#statusline()}
-
 " Fonction d'affichage d'un message en inverse vidéo
 function! s:DisplayStatus(msg)
   echohl Todo
