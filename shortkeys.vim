@@ -30,7 +30,7 @@ map <F4> <Esc>:call ToggleMouseActivation()<CR>
 " Appel de la fonction de nettoyage d'un fichier (enlève les ^M parasites et
 " les tabulations)
 map  <F3> <Esc>:call CleanCode()<CR>
-imap <F3> <Esc>:call CleanCode()<CR>i
+imap <F3> <Esc>:call CleanCode()<CR>
 
 " Amélioration de la recherche avant et arrière avec surlignement du pattern
 map * <Esc>:exe '2match Search /' . expand('<cWORD>') . '/'<CR><Esc>:exe '/' . expand('<cWORD>') . '/'<CR>

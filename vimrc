@@ -77,8 +77,7 @@ function! ToggleMouseActivation()
     let s:mouseActivation = 0
     set mouse=n
     set paste
-    call s:DisplayStatus('Désactivation de la gestion de la souris (mode '.
-                         'collage)')
+    call s:DisplayStatus('Désactivation de la gestion de la souris (mode collage)')
   else
     let s:mouseActivation = 1
     set mouse=a
@@ -96,7 +95,7 @@ set nopaste
 "   - suppression des caractères ^M en fin de ligne
 function! CleanCode()
   %retab
-  %s/^M//g
+  %s/\s$//g
   call s:DisplayStatus('Code nettoyé')
 endfunction
 
