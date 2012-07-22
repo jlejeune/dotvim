@@ -2,13 +2,20 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Ne plus sauvegarder les fichiers swp 
+set nobackup
+set nowritebackup
+set noswapfile
+
 " Activation de l'indentation automatique
 set autoindent
+
 " Redéfinition des tabulations
 set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=8
+
 " Activation de la détection automatique du type de fichier
 filetype on
 filetype plugin indent on
@@ -22,14 +29,14 @@ syntax on
 " Lecture des raccourcis clavier généraux
 execute 'source ' . $HOME . '/.vim/shortkeys.vim'
 
-" Activation de la complétion pour les fichiers python
-au FileType python set omnifunc=pythoncomplete#Complete
-" Activation de la complétion pour les fichiers javascript
-au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-" Activation de la complétion pour les fichiers html
-au FileType html set omnifunc=htmlcomplete#CompleteTags
-" Activation de la complétion pour les fichiers css
-au FileType css set omnifunc=csscomplete#CompleteCSS
+"" Activation de la complétion pour les fichiers python
+"au FileType python set omnifunc=pythoncomplete#Complete
+"" Activation de la complétion pour les fichiers javascript
+"au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"" Activation de la complétion pour les fichiers html
+"au FileType html set omnifunc=htmlcomplete#CompleteTags
+"" Activation de la complétion pour les fichiers css
+"au FileType css set omnifunc=csscomplete#CompleteCSS
 
 " Définition du type de complétion de SuperTab
 let g:SuperTabDefaultCompletionType = "context"
