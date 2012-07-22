@@ -93,16 +93,12 @@ function! ToggleMouseActivation()
   endif
 endfunction
 
-" Activation par défaut au démarrage de la gestion de la souris
-set mouse=a
-set nopaste
-
 " Fonction de 'nettoyage' d'un fichier :
 "   - remplacement des tabulations par des espaces
 "   - suppression des caractères ^M en fin de ligne
 function! CleanCode()
   %retab
-  %s/\s$//g
+  %s/\( \|\t\)*$//g
   call s:DisplayStatus('Code nettoyé')
 endfunction
 

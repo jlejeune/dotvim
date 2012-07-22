@@ -25,7 +25,7 @@ nmap <silent><Leader>tc <Esc>:Pytest class<CR>
 nmap <silent><Leader>tm <Esc>:Pytest method<CR>
 
 " Appel de la fonction d'activation/désactivation de la gestion de la souris
-map <F4> <Esc>:call ToggleMouseActivation()<CR>
+"map <F4> <Esc>:call ToggleMouseActivation()<CR>
 
 " Appel de la fonction de nettoyage d'un fichier (enlève les ^M parasites et
 " les tabulations)
