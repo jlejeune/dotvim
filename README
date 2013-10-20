@@ -12,10 +12,11 @@ Create symlink:
 
 Install packages:
 
-    sudo aptitude install git pep8 exuberant-ctags python-rope ruby1.8-dev rake
+    sudo aptitude install git pep8 exuberant-ctags python-rope ruby1.8-dev
+    sudo pip install flake8
 
 
 Install Vim plugins:
 
-    vim +BundleInstall qall
+    vim +BundleClean +BundleInstall! +qa
 

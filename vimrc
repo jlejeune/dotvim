@@ -1,118 +1,113 @@
-" Chargement de Pathogen
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" No vi-compatible
+set nocompatible
 
-" Ne plus sauvegarder les fichiers swp 
+""""""""""""
+"" VUNDLE
+""""""""""""
+" Setting up Vundle - the vim plugin bundler
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
+" Required for vundle
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle (required!)
+Bundle 'gmarik/vundle'
+
+""""""""""""""""""""
+"" BUNDLES VUNDLE
+""""""""""""""""""""
+"" File Browser
+Bundle 'scrooloose/nerdtree'
+" Ignore files on NERDTree
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+
+"" Buffer Explorer
+Bundle 'fholgado/minibufexpl.vim'
+
+"" Python autocompletion and documentation
+Bundle 'davidhalter/jedi-vim'
+
+"" Class/module browser
+Bundle 'majutsushi/tagbar'
+" autofocus on Tagbar open
+let g:tagbar_autofocus = 1
+
+"" PEP8 and python-flakes checker
+Bundle 'nvie/vim-flake8'
+" rules to ignore (example: "E501,W293")
+let g:flake8_ignore="E501"
+
+" Pending tasks list
+Bundle 'fisadev/FixedTaskList.vim'
+
+" Installing plugins the first time
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
+
+"""""""""""""""
+"" MAIN CONF
+"""""""""""""""
+" Save
 set nobackup
 set nowritebackup
 set noswapfile
 
-" Activation de l'indentation automatique
+" Indent
 set autoindent
 
-" Redéfinition des tabulations
+" Tabs and spaces handling
 set expandtab
-set shiftwidth=4
+set tabstop=4
 set softtabstop=4
-set tabstop=8
+set shiftwidth=4
 
-" Activation de la détection automatique du type de fichier
-filetype on
-filetype plugin indent on
+" Allow plugins by file type
+filetype plugin on
+filetype indent on
 
-" Longueur maximale des lignes
+" Text length
 set textwidth=79
 
-" Activation de la coloration syntaxique
+" Show status bar
+set laststatus=2
+
+" Allow incremental search
+set incsearch
+
+" Case
+set ignorecase
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Allow syntax highlight on
 syntax on
 
-" Lecture des raccourcis clavier généraux
-execute 'source ' . $HOME . '/.vim/shortkeys.vim'
-
-"" Activation de la complétion pour les fichiers python
-"au FileType python set omnifunc=pythoncomplete#Complete
-"" Activation de la complétion pour les fichiers javascript
-"au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"" Activation de la complétion pour les fichiers html
-"au FileType html set omnifunc=htmlcomplete#CompleteTags
-"" Activation de la complétion pour les fichiers css
-"au FileType css set omnifunc=csscomplete#CompleteCSS
-
-" Définition du type de complétion de SuperTab
-let g:SuperTabDefaultCompletionType = "context"
-
-" Activation de la visualisation de la documentation
-set completeopt=menuone,longest,preview
-
-" Activation de la complétion pour Django
-function! SetAutoDjangoCompletion()
-  let l:tmpPath   = split($PWD, '/')
-  let l:djangoVar = tmpPath[len(tmpPath)-1].'.settings'
-  let $DJANGO_SETTINGS_MODULE=djangoVar
-  echo 'Activation de la complétion Django avec : '.djangoVar
-  return 1
-endfunction
-
-" Activation de la complétion pour les librairies installées dans virtualenv
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-
-" Activation des snippets Django pour les fichiers python et html
-autocmd FileType python set ft=python.django
-autocmd FileType html set ft=htmldjango.html
-
-" Fonction d'affichage d'un message en inverse vidéo
-function! s:DisplayStatus(msg)
-  echohl Todo
-  echo a:msg
-  echohl None
-endfunction
-
-" Variable d'enregistrement de l'état de la gestion de la souris
-let s:mouseActivation = 1
-" Fonction permettant l'activation/désactivation de la gestion de la souris
-function! ToggleMouseActivation()
-  if (s:mouseActivation)
-    let s:mouseActivation = 0
-    set mouse=n
-    set paste
-    call s:DisplayStatus('Désactivation de la gestion de la souris (mode collage)')
-  else
-    let s:mouseActivation = 1
-    set mouse=a
-    set nopaste
-    call s:DisplayStatus('Activation de la gestion de la souris (mode normal)')
-  endif
-endfunction
-
-" Fonction de 'nettoyage' d'un fichier :
-"   - remplacement des tabulations par des espaces
-"   - suppression des caractères ^M en fin de ligne
-function! CleanCode()
-  %retab
-  %s/\( \|\t\)*$//g
-  call s:DisplayStatus('Code nettoyé')
-endfunction
-
-" Affichage des numéros de ligne
-set number
+" Display line numbers
+set nu
 highlight LineNr ctermbg=blue ctermfg=gray
 
-" Surligne la colonne du dernier caractère autorisé par textwidth
+" Highlight last column defined by textwidth
 set cc=+1
 
-" Ouverture des fichiers avec le curseur à la position de la dernière édition
-function! s:CursorOldPosition()
-  if line("'\"") > 0 && line("'\"") <= line("$")
-    exe "normal g`\""
-  endif
-endfunction
-autocmd BufReadPost * silent! call s:CursorOldPosition()
+" Load shorkeys
+execute 'source ' . $HOME . '/.vim/shortkeys.vim'
+
+" Load functions
+execute 'source ' . $HOME . '/.vim/functions.vim'
+
