@@ -13,7 +13,7 @@ Create symlink:
 
 Install packages:
 
-    sudo aptitude install git pep8 exuberant-ctags python-rope ruby1.8-dev
+    sudo aptitude install vim git pep8 exuberant-ctags
     sudo pip install flake8
 
 
