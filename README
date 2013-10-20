@@ -1,8 +1,8 @@
-This project is a Vim configuration Python and Django dedicated.
+This project is a Vim configuration Python dedicated.
 
 Installation:
 
-    git clone git://github.com/tcolombo/dotvim.git ~/.vim
+    git clone git://github.com/jlejeune/dotvim.git ~/.vim
 
 
 Create symlink:
@@ -12,21 +12,10 @@ Create symlink:
 
 Install packages:
 
-    sudo aptitude install git pep8 exuberant-ctags python-rope ruby1.8-dev
-                          rake
+    sudo aptitude install git pep8 exuberant-ctags python-rope ruby1.8-dev rake
 
 
-Switch to the `~/.vim` directory, and fetch submodules:
+Install Vim plugins:
 
-    cd ~/.vim
-    git submodule sync
-    git submodule init
-    git submodule update
-    git submodule foreach git submodule init
-    git submodule foreach git submodule update
-    
-    
-Compile command-t:
+    vim +BundleInstall qall
 
-    cd ~/.vim/bundle/command-t
-    rake make
