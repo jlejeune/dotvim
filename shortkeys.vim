@@ -10,6 +10,11 @@ map <F4> <Esc>:TagbarToggle<CR>
 " Run PEP8 + pyflakes validator
 map <F5> <Esc>:call Flake8()<CR>
 
+" Invert paste mode
+noremap <F8> :set invpaste paste?<CR>
+"set pastetoggle=<F8>
+"set showmode
+
 " Open files browser
 map <F9> <Esc>:NERDTreeToggle<CR>
 
