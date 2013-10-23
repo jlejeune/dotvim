@@ -37,6 +37,9 @@ Bundle 'fholgado/minibufexpl.vim'
 
 "" Python autocompletion and documentation
 Bundle 'davidhalter/jedi-vim'
+" jedi-vim customizations
+let g:jedi#popup_on_dot = 0
+"let g:jedi#show_call_signatures = 0
 
 "" Class/module browser
 Bundle 'majutsushi/tagbar'
