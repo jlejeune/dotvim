@@ -71,6 +71,7 @@ set noswapfile
 
 " Indent
 set autoindent
+set paste
 
 " Tabs and spaces handling
 set expandtab
@@ -82,31 +83,25 @@ set shiftwidth=4
 filetype plugin on
 filetype indent on
 
-" Text length
+" Showing line numbers and length
+set number
 set textwidth=79
+set nowrap  " don't automatically wrap on load
+set fo-=t   " don't automatically wrap text when typing
+set colorcolumn=80
+highlight LineNr ctermbg=blue ctermfg=gray
 
 " Show status bar
 set laststatus=2
 
-" Allow incremental search
+" Search
 set incsearch
-
-" Case
 set ignorecase
 set smartcase
-
-" Highlight search results
 set hlsearch
 
 " Allow syntax highlight on
 syntax on
-
-" Display line numbers
-set nu
-highlight LineNr ctermbg=blue ctermfg=gray
-
-" Highlight last column defined by textwidth
-set cc=+1
 
 " Load shorkeys
 execute 'source ' . $HOME . '/.vim/shortkeys.vim'
