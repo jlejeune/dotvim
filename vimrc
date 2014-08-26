@@ -39,6 +39,8 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'davidhalter/jedi-vim'
 " jedi-vim customizations
 let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#completions_command = "<C-N>"
 "let g:jedi#show_call_signatures = 0
 
 "" Class/module browser
