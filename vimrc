@@ -111,3 +111,10 @@ execute 'source ' . $HOME . '/.vim/shortkeys.vim'
 " Load functions
 execute 'source ' . $HOME . '/.vim/functions.vim'
 
+" Use a specific scheme for diff mode
+if &diff
+    highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+endif
