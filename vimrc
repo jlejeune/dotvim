@@ -50,8 +50,6 @@ let g:tagbar_autofocus = 1
 
 "" PEP8 and python-flakes checker
 Bundle 'nvie/vim-flake8'
-" rules to ignore (example: "E501,W293")
-let g:flake8_ignore="E501"
 
 " Pending tasks list
 Bundle 'fisadev/FixedTaskList.vim'
@@ -66,7 +64,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_puppet_puppetlint_args = '--no-80chars-check'
+let g:syntastic_python_flake8_args='--ignore=E501'
+autocmd BufWritePost *.py call Flake8()
 
 " Installing plugins the first time
 if iCanHazVundle == 0
