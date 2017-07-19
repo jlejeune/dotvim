@@ -8,9 +8,11 @@ Installation:
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 
-Create symlink:
+Create symlinks:
 
     ln -s ~/.vim/vimrc ~/.vimrc
+    # This symlink may be necessary to fix unknown Flake8() function
+    ln -s ~/.vim/bundle/vim-flake8/ftplugin ~/.vim/bundle/vim-flake8/plugin
 
 
 Install packages:
