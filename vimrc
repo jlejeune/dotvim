@@ -6,72 +6,57 @@ set nocompatible
 """"""""""""
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 if !filereadable(vundle_readme)
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     let iCanHazVundle=0
 endif
 
 " Required for vundle
-filetype off
+"filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Let Vundle manage Vundle (required!)
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 """"""""""""""""""""
 "" BUNDLES VUNDLE
 """"""""""""""""""""
 "" File Browser
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " Ignore files on NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-"" Buffer Explorer
-Bundle 'fholgado/minibufexpl.vim'
-
-"" Python autocompletion and documentation
-Bundle 'davidhalter/jedi-vim'
-" jedi-vim customizations
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#completions_command = "<C-N>"
-"let g:jedi#show_call_signatures = 0
-
-"" Class/module browser
-Bundle 'majutsushi/tagbar'
-" autofocus on Tagbar open
-let g:tagbar_autofocus = 1
-
 "" PEP8 and python-flakes checker
-Bundle 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 
 " Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
+Plugin 'fisadev/FixedTaskList.vim'
 
 " Syntastic
-Bundle 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let python_highlight_all=1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501'
-autocmd BufWritePost *.py call Flake8()
+
+" Auto-Indentation
+Plugin 'vim-scripts/indentpython.vim'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
-    :BundleInstall
+    :PluginInstall
 endif
 
 """""""""""""""
@@ -107,6 +92,13 @@ highlight LineNr ctermbg=blue ctermfg=gray
 " Show status bar
 set laststatus=2
 
+" UTF8 Support
+set encoding=utf-8
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
 " Search
 set incsearch
 set ignorecase
@@ -126,3 +118,7 @@ execute 'source ' . $HOME . '/.vim/functions.vim'
 if &diff
     colorscheme diff_scheme
 endif
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
