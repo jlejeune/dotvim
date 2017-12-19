@@ -93,7 +93,6 @@ set textwidth=79
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
-highlight LineNr ctermbg=blue ctermfg=gray
 
 " Show status bar
 set laststatus=2
