@@ -16,7 +16,7 @@ if !filereadable(vundle_readme)
 endif
 
 " Required for vundle
-"filetype off
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -51,6 +51,12 @@ let g:syntastic_check_on_wq = 0
 
 " Auto-Indentation
 Plugin 'vim-scripts/indentpython.vim'
+
+" Airline
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+set t_Co=256
 
 " Installing plugins the first time
 if iCanHazVundle == 0
