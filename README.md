@@ -13,7 +13,7 @@ Create symlinks:
 
 Install packages:
 
-    sudo aptitude install vim git pep8 exuberant-ctags python-pip
+    sudo apt install vim git pep8 exuberant-ctags python-pip
     sudo pip install flake8
 
 
