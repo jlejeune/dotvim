@@ -10,6 +10,8 @@ Create symlinks:
 
     ln -s ~/.vim/vimrc ~/.vimrc
 
+Install python lib
+    pip3 install --user black
 
 Install packages:
 
