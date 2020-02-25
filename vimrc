@@ -40,20 +40,25 @@ let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_python_flake8_executable = 'flake8'
+let g:ale_python_flake8_options = '--max-line-length=100'
 let g:ale_python_pylint_executable = 'pylint'
 let g:ale_python_black_executable = '/home/jlejeune/.local/bin/black'
+let g:ale_python_isort_executable = '/home/jlejeune/.local/bin/isort'
 " Check Python files
 let g:ale_linters = {'python': ['flake8']}
 let g:ale_linters_ignore = {'python': ['pylint']}
 " Fix Python files
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black'],
+\   'python': ['black', 'isort'],
 \}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_open_list = 1
+
+" Isort
+Plugin 'fisadev/vim-isort'
 
 " Pending tasks list
 Plugin 'fisadev/FixedTaskList.vim'
@@ -186,4 +191,5 @@ if &diff
 endif
 
 " All of your Plugins must be added before the following line
+call vundle#end()            " required
 filetype plugin indent on    " required
